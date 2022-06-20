@@ -1,0 +1,12 @@
+version: '3'
+services:
+
+  eureka-feign-client:
+    container_name: eureka_feign_client_host
+    image: eureka-feign-client
+    build: target
+    ports:
+      - '8080:8080'
+
+  # Name: docker-compose-test
+  # Image: docker-compose-test

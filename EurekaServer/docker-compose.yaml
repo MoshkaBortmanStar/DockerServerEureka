@@ -1,0 +1,9 @@
+version: '3'
+services:
+  eureka-server:
+    container_name: eureka_server_host
+    image: eureka-server
+    build: target
+    ports:
+      - '8761:8761'
+

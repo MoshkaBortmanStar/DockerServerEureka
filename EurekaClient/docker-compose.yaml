@@ -1,0 +1,9 @@
+version: '3'
+services:
+  eureka-client:
+    container_name: eureka_client_host
+    image: eureka-client
+    build: target
+    environment:
+      - EUREKA_URI=http://eureka_server_host:8761/eureka
+

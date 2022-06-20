@@ -1,0 +1,31 @@
+version: '3'
+services:
+  eureka-server:
+    container_name: eureka-server
+    image: eureka-server
+    build: docker/server
+    ports:
+      - '8761:8761'
+
+  eureka-client:
+    container_name: eureka-client
+    image: eureka-client
+    build: docker/client
+    environment:
+      - EUREKA_URI=http://eureka-server:8761/eureka
+    depends_on:
+      - eureka-server
+
+  eureka-feign-client:
+    container_name: eureka-feign-client
+    image: eureka-feign-client
+    build: docker/feignclient
+    ports:
+      - '8080:8080'
+    environment:
+      - EUREKA_URI=http://eureka-server:8761/eureka
+    depends_on:
+      - eureka-server
+
+  # Name: docker-compose-test
+  # Image: docker-compose-test
